@@ -1,2 +1,2 @@
 export {Home} from './Home';
-export {Job} from './Job';
+export {JobPage} from './Job';

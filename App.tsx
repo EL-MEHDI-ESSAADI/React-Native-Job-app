@@ -1,10 +1,16 @@
 import React from 'react';
-import {Home, Job} from '@src/pages';
+import {Home, JobPage} from '@src/pages';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Navbar} from '@src/components';
+import { Job } from '@src/types';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Home: undefined;
+  Job: {job: Job};
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App() {
   return (
@@ -17,8 +23,8 @@ function App() {
         />
         <Stack.Screen
           name="Job"
-          component={Job}
-          options={{header: () => <Navbar title="JOB" />}}
+          component={JobPage}
+          options={{header: () => <Navbar title="JOB" withBack />}}
         />
       </Stack.Navigator>
     </NavigationContainer>

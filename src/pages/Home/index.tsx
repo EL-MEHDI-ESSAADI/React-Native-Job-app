@@ -20,7 +20,9 @@ const DESCRIPTION_LENGTH = 200;
 const Card = ({item}: {item: Job}) => {
   const navigation = useNavigation<any>();
   return (
-    <Pressable style={styles.card} onPress={() => navigation.navigate('Job')}>
+    <Pressable
+      style={styles.card}
+      onPress={() => navigation.navigate('Job', {job: item})}>
       <View style={styles.card_header}>
         <Text style={styles.card_title}>{item.title}</Text>
         <Text style={styles.card_salary}>{`${parseInt(
@@ -42,6 +44,8 @@ function Home() {
   const [query, setQuery] = useState('');
   const [search, setSearch] = useState('');
   const {error, jobs, loading} = useJobs(query);
+
+  console.log(jobs);
 
   function onSearch() {
     setQuery(search);
